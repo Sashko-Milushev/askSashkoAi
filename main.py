@@ -1,3 +1,4 @@
+import asyncio
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
@@ -22,12 +23,18 @@ Base.metadata.create_all(bind=engine)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    logger.info("Starting up — initializing vector store...")
-    try:
-        from services.rag_service import build_index
-        build_index()
-    except Exception as exc:
-        logger.warning("Vector store init skipped: %s", exc)
+    # Run vector store init in a thread so uvicorn starts serving immediately.
+    # The healthcheck passes while indexing happens in the background.
+    def _build_index() -> None:
+        try:
+            from services.rag_service import build_index
+            build_index()
+            logger.info("Vector store ready")
+        except Exception as exc:
+            logger.warning("Vector store init skipped: %s", exc)
+
+    logger.info("Starting up — initializing vector store in background...")
+    asyncio.get_event_loop().run_in_executor(None, _build_index)
     yield
     logger.info("Shutting down")
 
