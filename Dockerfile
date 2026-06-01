@@ -30,6 +30,6 @@ RUN rm -rf .env vector_store __pycache__ tests .github \
 EXPOSE 8000
 
 # Run Alembic migrations then start the server
-CMD alembic upgrade head && \
-    uvicorn main:app --host 0.0.0.0 --port 8000 --workers 1
+WORKDIR /app
+CMD ["sh", "-c", "alembic upgrade head && uvicorn main:app --host 0.0.0.0 --port 8000 --workers 1"]
 
