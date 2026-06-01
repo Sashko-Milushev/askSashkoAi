@@ -27,9 +27,9 @@ COPY . .
 RUN rm -rf .env vector_store __pycache__ tests .github \
     && find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null || true
 
-EXPOSE 8000
+EXPOSE $PORT
 
 # Run Alembic migrations then start the server
 WORKDIR /app
-CMD ["sh", "-c", "alembic upgrade head && uvicorn main:app --host 0.0.0.0 --port 8000 --workers 1"]
+CMD ["sh", "-c", "alembic upgrade head && uvicorn main:app --host 0.0.0.0 --port $PORT --workers 1"]
 

@@ -5,7 +5,7 @@
     "dockerfilePath": "Dockerfile"
   },
   "deploy": {
-    "startCommand": "alembic upgrade head && uvicorn main:app --host 0.0.0.0 --port 8000 --workers 1",
+    "startCommand": "alembic upgrade head && uvicorn main:app --host 0.0.0.0 --port $PORT --workers 1",
     "healthcheckPath": "/health",
     "healthcheckTimeout": 60,
     "restartPolicyType": "ON_FAILURE",
