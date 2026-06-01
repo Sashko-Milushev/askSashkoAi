@@ -1,0 +1,38 @@
+# Secrets
+.env
+*.env
+
+# Dev artefacts
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Pre-built vector store (rebuilt on startup in the container)
+vector_store/
+
+# Local DB
+*.db
+
+# Tests
+tests/
+
+# CI/CD
+.github/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Docs / plans
+plans/
+PLAN.md
+*.md
+
+# Python venv
+.venv/
+venv/
+
