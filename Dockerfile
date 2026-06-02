@@ -31,5 +31,6 @@ EXPOSE $PORT
 
 # Run Alembic migrations then start the server
 WORKDIR /app
-CMD ["sh", "-c", "alembic upgrade head && uvicorn main:app --host 0.0.0.0 --port $PORT --workers 1"]
+RUN chmod +x start.sh
+CMD ["./start.sh"]
 
