@@ -27,22 +27,24 @@ _chunks: list[dict] = []
 
 
 def _compute_source_hash() -> str:
-    """Hash all PDF filenames + sizes to detect any changes."""
+    """Hash all source filenames + sizes (PDFs and TXT) to detect any changes."""
     kb_path = Path(settings.knowledge_resources_dir)
     parts = [
-        f"{pdf.name}:{pdf.stat().st_size}"
-        for pdf in sorted(kb_path.glob("*.pdf"))
+        f"{source.name}:{source.stat().st_size}"
+        for source in sorted(kb_path.glob("**/*.*"))
+        if source.suffix.lower() in {".pdf", ".txt"}
     ]
     return hashlib.md5("|".join(parts).encode()).hexdigest()
 
 
-def _extract_text_from_pdfs() -> list[dict]:
-    """Extract page-level text from all PDFs in knowledge_resources/."""
+def _extract_text_from_sources() -> list[dict]:
+    """Extract text from PDFs and plain text files in knowledge_resources/."""
     kb_path = Path(settings.knowledge_resources_dir)
     pages: list[dict] = []
 
-    for pdf_path in sorted(kb_path.glob("*.pdf")):
-        logger.info("Extracting text from: %s", pdf_path.name)
+    # Extract from PDFs
+    for pdf_path in sorted(kb_path.glob("**/*.pdf")):
+        logger.info("Extracting text from PDF: %s", pdf_path.name)
         with pdfplumber.open(pdf_path) as pdf:
             for page_num, page in enumerate(pdf.pages, start=1):
                 text = page.extract_text() or ""
@@ -53,7 +55,20 @@ def _extract_text_from_pdfs() -> list[dict]:
                         "page": page_num,
                     })
 
-    logger.info("Extracted %d pages from %d PDFs", len(pages), len(list(kb_path.glob("*.pdf"))))
+    # Extract from plain text files
+    for txt_path in sorted(kb_path.glob("**/*.txt")):
+        logger.info("Extracting text from: %s", txt_path.name)
+        text = txt_path.read_text(encoding="utf-8").strip()
+        if text:
+            pages.append({
+                "text": text,
+                "source": txt_path.name,
+                "page": 1,
+            })
+
+    pdf_count = len(list(kb_path.glob("**/*.pdf")))
+    txt_count = len(list(kb_path.glob("**/*.txt")))
+    logger.info("Extracted %d pages from %d PDFs and %d text files", len(pages), pdf_count, txt_count)
     return pages
 
 
@@ -136,7 +151,7 @@ def build_index(force: bool = False) -> None:
         return
 
     logger.info("Building vector store...")
-    pages = _extract_text_from_pdfs()
+    pages = _extract_text_from_sources()
 
     if not pages:
         logger.warning("No PDF content found in '%s' — skipping index build", settings.knowledge_resources_dir)
