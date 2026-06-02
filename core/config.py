@@ -12,7 +12,9 @@ class Settings:
     openai_model: str = "gpt-4o"
     openai_embedding_model: str = "text-embedding-3-small"
 
-    database_url: str = os.getenv("DATABASE_URL", "sqlite:///./askSashkoAi.db")
+    # Railway provides postgres:// but SQLAlchemy requires postgresql://
+    _raw_db_url: str = os.getenv("DATABASE_URL", "sqlite:///./askSashkoAi.db")
+    database_url: str = _raw_db_url.replace("postgres://", "postgresql://", 1)
 
     smtp_host: str = os.getenv("SMTP_HOST", "smtp.gmail.com")
     smtp_port: int = int(os.getenv("SMTP_PORT", "587"))

@@ -11,14 +11,16 @@ from slowapi.errors import RateLimitExceeded
 from core.config import settings, ALLOWED_ORIGINS
 from core.limiter import limiter
 from core.logging_config import setup_logging, get_logger
-from core.database import Base, engine
+from core.database import Base  # noqa: F401 — Base needed so models register
 from models import db_models  # noqa: F401 — registers all ORM models with Base
 from routers import health, chat, contact
 
 setup_logging()
 logger = get_logger(__name__)
 
-Base.metadata.create_all(bind=engine)
+# NOTE: Base.metadata.create_all is intentionally NOT called here.
+# Schema is managed by Alembic (runs before uvicorn in the start command).
+# Calling create_all at import time crashes uvicorn if the DB isn't ready yet.
 
 
 @asynccontextmanager
