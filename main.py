@@ -11,7 +11,7 @@ from slowapi.errors import RateLimitExceeded
 from core.config import settings, ALLOWED_ORIGINS
 from core.limiter import limiter
 from core.logging_config import setup_logging, get_logger
-from core.database import Base  # noqa: F401 — Base needed so models register
+from core.database import Base, engine
 from models import db_models  # noqa: F401 — registers all ORM models with Base
 from routers import health, chat, contact
 
@@ -25,8 +25,15 @@ logger = get_logger(__name__)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    # Safety net: create tables if alembic migration was skipped or failed.
+    # create_all is a no-op if tables already exist.
+    try:
+        Base.metadata.create_all(bind=engine)
+        logger.info("Database schema verified.")
+    except Exception as exc:
+        logger.warning("DB schema check failed: %s", exc)
+
     # Run vector store init in a thread so uvicorn starts serving immediately.
-    # The healthcheck passes while indexing happens in the background.
     def _build_index() -> None:
         try:
             from services.rag_service import build_index
