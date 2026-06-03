@@ -70,23 +70,80 @@
         <section id="tab-projects" class="tab-section">
             <div class="content-wrapper">
                 <h2>Projects</h2>
-                <div class="projects-grid" id="projects-grid">
+
+                <!-- Work Projects -->
+                <div class="projects-section-label">💼 Work Projects</div>
+                <div class="projects-grid">
+
+                    <div class="project-card">
+                        <div class="project-tag">AI / Smart Home</div>
+                        <h3>Scene-Creation Assistant</h3>
+                        <p>A production AI system that converts natural language chat into valid JSON automation scenes for Shelly smart home devices. Built with RAG retrieval over JSON examples, validation layers, prompt engineering, and a backoffice dashboard. Started as an Alexa skill demo and evolved into a full chat-based feature integrated into the client platform. Ran in production for several months and is still active in staging.</p>
+                        <div class="project-stack">
+                            <span>FastAPI</span><span>MongoDB</span><span>OpenAI</span><span>Gemini AI</span><span>FAISS</span><span>RAG</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-tag">Data / AI</div>
+                        <h3>Finstat Data</h3>
+                        <p>A data extraction and reporting pipeline for processing business documents and financial data. Combined OCR tools with OpenAI API to extract, validate, and transform information from PDFs and scanned images. The full pipeline covered image preprocessing, OCR extraction, validation, data processing, storage, and reporting output.</p>
+                        <div class="project-stack">
+                            <span>Python</span><span>Pandas</span><span>OpenCV</span><span>pytesseract</span><span>pdf2image</span><span>OpenAI</span><span>Matplotlib</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-tag">Embedded / IoT</div>
+                        <h3>Shelly-Scripts</h3>
+                        <p>Embedded JavaScript scripts running directly on Shelly smart home devices, enabling local automation without depending on the cloud. Designed around an offline-first paradigm so devices continue operating even when internet connectivity is lost. Devices communicated via Bluetooth and Wi-Fi, and dozens of reusable scenario templates were created for end users.</p>
+                        <div class="project-stack">
+                            <span>JavaScript</span><span>Shelly API</span><span>Bluetooth</span><span>Wi-Fi</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Personal Projects -->
+                <div class="projects-section-label" style="margin-top: 36px;">🧑‍💻 Personal Projects</div>
+                <div class="projects-grid">
+
                     <div class="project-card">
                         <div class="project-tag">AI / Backend</div>
-                        <h3>askSashkoAi</h3>
-                        <p>This website — a RAG-powered AI chatbot that speaks as me. Built with FastAPI, OpenAI GPT-4o, and FAISS.</p>
+                        <h3>
+                            askSashkoAi
+                            <a href="https://github.com/Sashko-Milushev/askSashkoAi" target="_blank" rel="noopener" class="project-link">GitHub ↗</a>
+                        </h3>
+                        <p>This website — a RAG-powered AI chatbot that speaks as me in first person. Built with FastAPI, OpenAI GPT-4o, FAISS, and a plain HTML/JS frontend. Includes rate limiting, session tracking, daily cost cap, email notifications, PostgreSQL, Alembic migrations, and deployment on Railway with Cloudflare DNS.</p>
                         <div class="project-stack">
-                            <span>Python</span><span>FastAPI</span><span>OpenAI</span><span>FAISS</span>
+                            <span>Python</span><span>FastAPI</span><span>OpenAI</span><span>FAISS</span><span>PostgreSQL</span><span>Railway</span>
                         </div>
                     </div>
+
                     <div class="project-card">
-                        <div class="project-tag">Backend</div>
-                        <h3>More coming soon</h3>
-                        <p>I'm adding more projects here. Ask the chatbot about my work in the meantime!</p>
+                        <div class="project-tag">Backend / Full-stack</div>
+                        <h3>
+                            Fishbook
+                            <a href="https://github.com/Sashko-Milushev/fishbook" target="_blank" rel="noopener" class="project-link">GitHub ↗</a>
+                        </h3>
+                        <p>A social platform for hobby fishermen built as my SoftUni diploma project. Users can share photos, like and comment on posts, and find information about lakes and weather conditions. Built entirely without AI coding assistants — everything was planned, implemented, and debugged manually, which made it a strong foundation for understanding full-stack development.</p>
                         <div class="project-stack">
-                            <span>Python</span><span>Django</span>
+                            <span>Django</span><span>PostgreSQL</span><span>JavaScript</span><span>HTML</span>
                         </div>
                     </div>
+
+                    <div class="project-card">
+                        <div class="project-tag">Python / Multi-interface</div>
+                        <h3>
+                            WeatherApp
+                            <a href="https://github.com/Sashko-Milushev/weather-application" target="_blank" rel="noopener" class="project-link">GitHub ↗</a>
+                        </h3>
+                        <p>A multi-interface weather system built to demonstrate how the same core logic can be reused across different technologies. Includes a console app, a Tkinter desktop GUI, a Flask web app, and a Django web app with database support for comparing weather data between cities. Uses the OpenWeather API for real-time data.</p>
+                        <div class="project-stack">
+                            <span>Python</span><span>Django</span><span>Flask</span><span>Tkinter</span><span>OpenWeather API</span>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
