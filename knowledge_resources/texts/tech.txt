@@ -1,0 +1,168 @@
+# Technical Projects and Engineering Experience
+
+## Fishbook – Social Platform for Hobby Fishermen
+
+Fishbook was my diploma project for SoftUni. It is a social platform for hobby fishermen where users can share photos, like and comment on posts, and find information about lakes and weather conditions.
+
+I built the project with **Django, PostgreSQL, JavaScript, and HTML**.
+
+**Django** is a Python web framework that gives structure to full-stack applications. I used it because it helps organize the project into models, views, and templates, and it gives built-in tools for routing, database work, authentication, and admin features.
+
+**PostgreSQL** is a relational database. I used it to store structured data such as users, posts, comments, and related fishing information. It is a good choice when the data has clear relationships and needs reliable queries.
+
+**JavaScript** was used for interactive frontend behavior, and **HTML** was used to build the page structure and content.
+
+This project was very hard to build because it was created before AI coding assistants were available. Everything had to be planned, implemented, and debugged manually. It was my diploma defense project, and it showed that I could build a real web application from scratch. The project is not deployed now, but the source code can be checked in my GitHub repository.
+
+---
+
+## WeatherApp – Multi-Interface Weather System
+
+WeatherApp was built to demonstrate different ways of using the same core logic with multiple technologies and interfaces.
+
+The project uses the **OpenWeather API** to fetch real-time weather data. An API is a way for one system to request data from another system over the internet, usually in a structured format like JSON.
+
+The application has several versions:
+
+- Pure Python console application
+- Pure Python application with **Tkinter**
+- Web application with **Flask**
+- Web application with **Django**
+- Django version with database support for comparing weather data between searched cities
+
+**Tkinter** is Python’s built-in GUI library. I used it to build a desktop interface without needing a browser. It is useful for simple graphical tools.
+
+**Flask** is a lightweight web framework. I used it to show how a web app can be built with minimal structure, which makes it flexible and easy to control.
+
+**Django** was used for the more structured web versions. It is useful when the application needs stronger organization, database support, and a scalable project structure.
+
+This project was useful because it showed how the same weather logic can be reused across different user interfaces and architectures.
+
+---
+
+## Internship – Infinno LLC
+
+My internship at Infinno LLC was a very intensive 6-month period. During that time, I worked with raw Python and used libraries such as **NumPy, Pandas, Keras, logging tools, and other data and machine learning libraries**.
+
+**NumPy** is used for numerical computing and efficient array operations.
+**Pandas** is used for data processing and analysis with tables and structured data.
+**Keras** is a high-level library for building neural networks and machine learning models.
+Logging tools were important for understanding what happened during execution and for tracking issues in complex workflows.
+
+During this period I studied several important books, including:
+- *Python Distilled*
+- *Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow*
+- *Hands-On Large Language Models*
+- *Natural Language Processing with Transformers*
+- *AI Engineering: Building Applications with Foundation Models*
+
+Some days I spent more than 12 hours working on internship tasks, studying, and testing solutions. This period gave me a strong base in data processing, machine learning concepts, and practical AI engineering.
+
+The internship was successful, and I got a job in the company afterward.
+
+---
+
+## Finstat Data – Data Extraction and Reporting System
+
+Finstat Data was a project where I worked with a stakeholder from the client side. The main goal was to process data, transform it, and present it clearly.
+
+At the beginning I mostly used **Pandas, Excel, and Matplotlib**.
+
+**Pandas** was used for cleaning, transforming, and reshaping the data. It is very useful when working with tables, filters, merges, and data analysis workflows.
+**Excel** was used because many business users work with spreadsheets, and it is a practical format for reporting and review.
+**Matplotlib** was used to create charts and visual representations of the progress and results.
+
+Later the project became more advanced and started to include OCR and document processing tools such as **OpenCV, pytesseract, pdf2image**, and **OpenAI API integrations**.
+
+**OpenCV** is used for image processing and preprocessing. I used it to prepare images before OCR.
+**pytesseract** is an OCR engine that extracts text from images.
+**pdf2image** converts PDF pages into images so they can be processed by OCR tools.
+The OpenAI integration helped with processing and understanding data in a more flexible way.
+
+The pipeline included:
+image preprocessing → OCR extraction → validation → data processing → storage → reporting
+
+This project taught me how to combine business data work with document intelligence and AI-assisted processing.
+
+---
+
+## Scene-Creation Assistant – Smart Home AI Automation System
+
+This project helps users create automation scenes for **Shelly devices**, which are smart home devices used for relays, switches, sensors, and local automation control.
+
+A scene is a set of conditions and actions. For example: if one thing happens, then another action is triggered. The scene itself is stored as a **JSON structure**, which is a lightweight and machine-readable way to store structured data.
+
+The main challenge was to build a system that converts natural language chat into correct and valid JSON scenes.
+
+I worked on this project from the beginning, first with demos and an **Alexa skill** that allowed talking on top of OpenAI integration. Later the solution was integrated into the client platform as a chat-based assistant.
+
+The main technologies were **FastAPI, MongoDB, OpenAI, Gemini AI, FAISS, and RAG**.
+
+**FastAPI** is a modern Python framework for building fast APIs. I used it because it is efficient, clean, and good for async backend logic.
+**MongoDB** is a NoSQL database that stores JSON-like documents. It fits well for flexible scene data and assistant-related information.
+**OpenAI and Gemini AI** were used for the chat and generation logic.
+**FAISS** was used as the vector search system for RAG retrieval. It helps find relevant examples by comparing embeddings.
+**RAG** stands for Retrieval-Augmented Generation. It means the model first retrieves relevant context, then uses it to generate a better answer.
+
+The system included:
+- AI chat interface
+- scene generation
+- validation layers
+- JSON transformations
+- backoffice dashboard
+- user analysis
+- functional tests with bot-users
+- prompt engineering and reply refactoring
+- context management
+- RAG for JSON examples
+
+This was a big production system and it worked for several months in production. It is still running in staging.
+
+---
+
+## Shelly-Scripts – Offline Smart Device Automation Scripts
+
+Shelly-Scripts was a project where I developed JavaScript embedded scripts for Shelly devices.
+
+These scripts control device behavior directly on the devices themselves.
+
+The key idea was to create an **offline automation paradigm**, where the system still works even if internet connectivity is lost. In standard cloud-based smart home systems, functionality often depends on the cloud. Here, the scripts could continue to operate locally.
+
+In some cases the devices communicated through **Bluetooth**, and in others through **Wi-Fi**. This made the system more resilient and useful in real homes where internet problems can happen.
+
+I also created several dozen templates so users could choose a scenario and then apply the right devices and actions.
+
+This project was about reliability, local automation, and practical real-world behavior instead of depending completely on the cloud.
+
+---
+
+## Portfolio Website – AI Chat-Based Personal System
+
+My portfolio website is built as an AI-driven system where a chatbot speaks instead of me.
+
+The goal is not only to show static information, but to let people interact with my experience, skills, and background through a chat interface.
+
+The backend is built with **FastAPI, PostgreSQL, SQLAlchemy, OpenAI, FAISS, JavaScript, HTML, and CSS**.
+
+**FastAPI** is used for the backend APIs.
+**PostgreSQL** stores structured data reliably.
+**SQLAlchemy** is the ORM layer that helps Python work with the database in a clean way.
+**OpenAI** is used for the chat and generation logic.
+**FAISS** supports retrieval for the RAG system.
+**JavaScript, HTML, and CSS** are used for the frontend interface.
+
+The project is deployed using **Railway**, and **Cloudflare** is used for DNS and routing.
+
+The main idea of the portfolio is to create a digital version of myself that can answer questions and explain my experience in a natural conversational way.
+
+---
+
+## Software Principles and Work Behavior
+
+When I build new features, I like to add detailed debug-level logging at the beginning. That helps me follow the data flow through the code and understand how information moves through the application. Later, when a feature becomes stable, I reduce the logging and keep only the warnings and errors that give enough information to understand what happened and where.
+
+My architecture decisions are always based on the business logic. I prefer to keep the code clean and simple from the start. I like to separate modules and feature logic early, so that when the project becomes more complex, it is easier to scale and maintain.
+
+I do not like to use technology just because it is modern or popular. I think tools should be chosen based on project needs. If something is not needed, I do not use it. If something is needed and I do not yet know how to implement it, I prefer to learn it properly. I do not believe in the “golden hammer” approach. My usual pattern is: start simple, make it work, then scale.
+
+I am comfortable using the popular Python frameworks and libraries when they fit the task. I also like working with OpenAI and Gemini AI tools. For development, I use PyCharm Professional because it is heavy, but very comfortable for me.
