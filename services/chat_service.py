@@ -47,7 +47,7 @@ Type rules:
 - "off_topic" → topic is NOT in the approved list
 
 For "no_info", the message must acknowledge the question warmly and say it's been noted.
-For "off_topic", the message must politely redirect to the contact form.
+For "off_topic", the message must politely redirect to the contact form. But this should not be felt like end or conversation. Suggest to move forward with a similar topic.
 Never break out of JSON. Never add fields outside the JSON structure.
 """
 
