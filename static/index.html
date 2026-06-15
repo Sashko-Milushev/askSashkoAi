@@ -1,209 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Sashko Milushev — Python & AI Developer</title>
-    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/style.css"/>
 </head>
 <body>
 
-    <header>
-        <div class="header-inner">
-            <div class="logo">
-                <span class="logo-dot">⬡</span>
-                <span>Sashko Milushev</span>
-            </div>
-            <nav>
-                <button class="tab-btn active" data-tab="chat">💬 Chat</button>
-                <button class="tab-btn" data-tab="projects">🛠 Projects</button>
-                <button class="tab-btn" data-tab="bio">👤 About</button>
-                <button class="tab-btn" data-tab="contact">📬 Contact</button>
-            </nav>
+<header>
+    <div class="header-inner">
+        <div class="logo">
+            <span class="logo-dot">⬡</span>
+            <span>Sashko Milushev</span>
         </div>
-    </header>
+        <nav>
+            <button class="tab-btn active" data-tab="chat">💬 Chat</button>
+            <button class="tab-btn" data-tab="projects">🛠 Projects</button>
+            <button class="tab-btn" data-tab="bio">👤 About</button>
+            <button class="tab-btn" data-tab="contact">📬 Contact</button>
+        </nav>
+    </div>
+</header>
 
-    <main>
+<main>
 
-        <!-- ── CHAT TAB ── -->
-        <section id="tab-chat" class="tab-section active">
-            <div class="chat-wrapper">
-                <div class="chat-intro">
-                    <p>Hi! I'm Sashko's AI - we can talk about my work, projects, or background.</p>
-                </div>
-                <div id="chat-messages" class="chat-messages"></div>
-                <div id="chat-limit-banner" class="limit-banner hidden">
-                    My AI self is taking a short break — session limit reached. Come back tomorrow! 🙂
-                </div>
-                <form id="chat-form" class="chat-input-row" autocomplete="off">
-                    <input
+    <!-- ── CHAT TAB ── -->
+    <section id="tab-chat" class="tab-section active">
+        <div class="chat-wrapper">
+            <div class="chat-intro">
+                <p>Hi! I'm Sashko's AI - we can talk about my work, projects, or background.</p>
+            </div>
+            <div id="chat-messages" class="chat-messages"></div>
+            <div id="chat-limit-banner" class="limit-banner hidden">
+                My AI self is taking a short break — session limit reached. Come back tomorrow! 🙂
+            </div>
+            <form id="chat-form" class="chat-input-row" autocomplete="off">
+                <input
                         id="chat-input"
                         type="text"
                         placeholder="Ask me something…"
                         maxlength="2000"
                         autocomplete="off"
-                    />
-                    <button type="submit" id="chat-send-btn">Send</button>
-                </form>
-                <div class="chat-footer">
-                    <span id="msg-counter">0 / 20 messages used</span>
-                </div>
+                />
+                <button type="submit" id="chat-send-btn">Send</button>
+            </form>
+            <div class="chat-footer">
+                <span id="msg-counter">0 / 20 messages used</span>
             </div>
+        </div>
 
-            <!-- Ask-me modal -->
-            <div id="ask-me-modal" class="modal hidden">
-                <div class="modal-box">
-                    <h3>Send me this question directly</h3>
-                    <p id="ask-me-question-preview" class="ask-me-preview"></p>
-                    <form id="ask-me-form">
-                        <input type="email" id="ask-me-email" placeholder="Your email (optional)" />
-                        <div class="modal-actions">
-                            <button type="submit" class="btn-primary">Send question</button>
-                            <button type="button" id="ask-me-cancel" class="btn-secondary">Cancel</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-        <!-- ── PROJECTS TAB ── -->
-        <section id="tab-projects" class="tab-section">
-            <div class="content-wrapper">
-                <h2>Projects</h2>
-
-                <!-- Work Projects -->
-                <div class="projects-section-label">💼 Work Projects</div>
-                <div class="projects-grid">
-
-                    <div class="project-card">
-                        <div class="project-tag">AI / Smart Home</div>
-                        <h3>Scene-Creation Assistant</h3>
-                        <p>A production AI system that converts natural language chat into valid JSON automation scenes for Shelly smart home devices. Built with RAG retrieval over JSON examples, validation layers, prompt engineering, and a backoffice dashboard. Started as an Alexa skill demo and evolved into a full chat-based feature integrated into the client platform. Ran in production for several months and is still active in staging.</p>
-                        <div class="project-stack">
-                            <span>FastAPI</span><span>MongoDB</span><span>OpenAI</span><span>Gemini AI</span><span>FAISS</span><span>RAG</span>
-                        </div>
+        <!-- Ask-me modal -->
+        <div id="ask-me-modal" class="modal hidden">
+            <div class="modal-box">
+                <h3>Send me this question directly</h3>
+                <p id="ask-me-question-preview" class="ask-me-preview"></p>
+                <form id="ask-me-form">
+                    <input type="email" id="ask-me-email" placeholder="Your email (optional)"/>
+                    <div class="modal-actions">
+                        <button type="submit" class="btn-primary">Send question</button>
+                        <button type="button" id="ask-me-cancel" class="btn-secondary">Cancel</button>
                     </div>
-
-                    <div class="project-card">
-                        <div class="project-tag">Data / AI</div>
-                        <h3>Finstat Data</h3>
-                        <p>A data extraction and reporting pipeline for processing business documents and financial data. Combined OCR tools with OpenAI API to extract, validate, and transform information from PDFs and scanned images. The full pipeline covered image preprocessing, OCR extraction, validation, data processing, storage, and reporting output.</p>
-                        <div class="project-stack">
-                            <span>Python</span><span>Pandas</span><span>OpenCV</span><span>pytesseract</span><span>pdf2image</span><span>OpenAI</span><span>Matplotlib</span>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-tag">Embedded / IoT</div>
-                        <h3>Shelly-Scripts</h3>
-                        <p>Embedded JavaScript scripts running directly on Shelly smart home devices, enabling local automation without depending on the cloud. Designed around an offline-first paradigm so devices continue operating even when internet connectivity is lost. Devices communicated via Bluetooth and Wi-Fi, and dozens of reusable scenario templates were created for end users.</p>
-                        <div class="project-stack">
-                            <span>JavaScript</span><span>Shelly API</span><span>Bluetooth</span><span>Wi-Fi</span>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Personal Projects -->
-                <div class="projects-section-label" style="margin-top: 36px;">🧑‍💻 Personal Projects</div>
-                <div class="projects-grid">
-
-                    <div class="project-card">
-                        <div class="project-tag">AI / Backend</div>
-                        <h3>
-                            askSashkoAi
-                            <a href="https://github.com/Sashko-Milushev/askSashkoAi" target="_blank" rel="noopener" class="project-link">GitHub ↗</a>
-                        </h3>
-                        <p>This website — a RAG-powered AI chatbot that speaks as me in first person. Built with FastAPI, OpenAI GPT-4o, FAISS, and a plain HTML/JS frontend. Includes rate limiting, session tracking, daily cost cap, email notifications, PostgreSQL, Alembic migrations, and deployment on Railway with Cloudflare DNS.</p>
-                        <div class="project-stack">
-                            <span>Python</span><span>FastAPI</span><span>OpenAI</span><span>FAISS</span><span>PostgreSQL</span><span>Railway</span>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-tag">Backend / Full-stack</div>
-                        <h3>
-                            Fishbook
-                            <a href="https://github.com/Sashko-Milushev/fishbook" target="_blank" rel="noopener" class="project-link">GitHub ↗</a>
-                        </h3>
-                        <p>A social platform for hobby fishermen built as my SoftUni diploma project. Users can share photos, like and comment on posts, and find information about lakes and weather conditions. Built entirely without AI coding assistants — everything was planned, implemented, and debugged manually, which made it a strong foundation for understanding full-stack development.</p>
-                        <div class="project-stack">
-                            <span>Django</span><span>PostgreSQL</span><span>JavaScript</span><span>HTML</span>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-tag">Python / Multi-interface</div>
-                        <h3>
-                            WeatherApp
-                            <a href="https://github.com/Sashko-Milushev/weather-application" target="_blank" rel="noopener" class="project-link">GitHub ↗</a>
-                        </h3>
-                        <p>A multi-interface weather system built to demonstrate how the same core logic can be reused across different technologies. Includes a console app, a Tkinter desktop GUI, a Flask web app, and a Django web app with database support for comparing weather data between cities. Uses the OpenWeather API for real-time data.</p>
-                        <div class="project-stack">
-                            <span>Python</span><span>Django</span><span>Flask</span><span>Tkinter</span><span>OpenWeather API</span>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- ── BIO TAB ── -->
-        <section id="tab-bio" class="tab-section">
-            <div class="content-wrapper bio-layout">
-                <div class="bio-avatar">SM</div>
-                <div class="bio-text">
-                    <h2>Sashko Milushev</h2>
-                    <p class="bio-tagline">Python Developer — Backend &amp; AI Solutions</p>
-                    <p>
-                        I build reliable, scalable backend systems and AI-powered applications.
-                        My stack is Python-first — FastAPI, Django, SQLAlchemy — combined with modern AI tools
-                        like OpenAI, LangChain, and vector databases.
-                    </p>
-                    <p>
-                        I care about clean code, good architecture, and building things that actually work.
-                        Whether it's a REST API, a RAG pipeline, or a full-stack solution — I like
-                        to understand the problem deeply before writing the first line.
-                    </p>
-                    <div class="bio-skills">
-                        <span>Python</span><span>FastAPI</span><span>Django</span>
-                        <span>SQLAlchemy</span><span>OpenAI</span><span>RAG</span>
-                        <span>PostgreSQL</span><span>Docker</span><span>REST APIs</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ── CONTACT TAB ── -->
-        <section id="tab-contact" class="tab-section">
-            <div class="content-wrapper">
-                <h2>Get in touch</h2>
-                <p class="contact-intro">Have a project idea, a job opportunity, or just want to say hi? Send me a message.</p>
-                <form id="contact-form" class="contact-form" novalidate>
-                    <div class="form-group">
-                        <label for="c-name">Name</label>
-                        <input id="c-name" type="text" placeholder="Your name" required maxlength="200" />
-                    </div>
-                    <div class="form-group">
-                        <label for="c-email">Email</label>
-                        <input id="c-email" type="email" placeholder="your@email.com" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="c-message">Message</label>
-                        <textarea id="c-message" rows="5" placeholder="What's on your mind?" required maxlength="3000"></textarea>
-                    </div>
-                    <button type="submit" class="btn-primary" id="contact-submit">Send message</button>
-                    <p id="contact-status" class="form-status hidden"></p>
                 </form>
             </div>
-        </section>
+        </div>
+    </section>
 
-    </main>
+    <!-- ── PROJECTS TAB ── -->
+    <section id="tab-projects" class="tab-section">
+        <div class="content-wrapper">
+            <h2>Projects</h2>
 
-    <footer>
-        <p>© 2026 Sashko Milushev &mdash; Built with FastAPI &amp; OpenAI</p>
-    </footer>
+            <!-- Work Projects -->
+            <div class="projects-section-label">💼 Work Projects</div>
+            <div class="projects-grid">
 
-    <script src="/app.js"></script>
+                <div class="project-card">
+                    <div class="project-tag">AI / Smart Home</div>
+                    <h3>Scene-Creation Assistant</h3>
+                    <p>A production AI system that converts natural language chat into valid JSON automation scenes for
+                        Shelly smart home devices. Built with RAG retrieval over JSON examples, validation layers,
+                        prompt engineering, and a backoffice dashboard. Started as an Alexa skill demo and evolved into
+                        a full chat-based feature integrated into the client platform. Ran in production for several
+                        months and is still active in staging.</p>
+                    <div class="project-stack">
+                        <span>FastAPI</span><span>MongoDB</span><span>OpenAI</span><span>Gemini AI</span><span>FAISS</span><span>RAG</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-tag">Data / AI</div>
+                    <h3>Finstat Data</h3>
+                    <p>A data extraction and reporting pipeline for processing business documents and financial data.
+                        Combined OCR tools with OpenAI API to extract, validate, and transform information from PDFs and
+                        scanned images. The full pipeline covered image preprocessing, OCR extraction, validation, data
+                        processing, storage, and reporting output.</p>
+                    <div class="project-stack">
+                        <span>Python</span><span>Pandas</span><span>OpenCV</span><span>pytesseract</span><span>pdf2image</span><span>OpenAI</span><span>Matplotlib</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-tag">Embedded / IoT</div>
+                    <h3>Shelly-Scripts</h3>
+                    <p>Embedded JavaScript scripts running directly on Shelly smart home devices, enabling local
+                        automation without depending on the cloud. Designed around an offline-first paradigm so devices
+                        continue operating even when internet connectivity is lost. Devices communicated via Bluetooth
+                        and Wi-Fi, and dozens of reusable scenario templates were created for end users.</p>
+                    <div class="project-stack">
+                        <span>JavaScript</span><span>Shelly API</span><span>Bluetooth</span><span>Wi-Fi</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Personal Projects -->
+            <div class="projects-section-label" style="margin-top: 36px;">🧑‍💻 Personal Projects</div>
+            <div class="projects-grid">
+
+                <div class="project-card">
+                    <div class="project-tag">AI / Backend</div>
+                    <h3>
+                        Email Agent — 10-K Financial Data Extraction
+                        <a href="https://github.com/Sashko-Milushev/emailAgent" target="_blank" rel="noopener"
+                           class="project-link">GitHub ↗</a>
+                    </h3>
+                    <p>A production-style AI pipeline for extracting structured financial data from SEC 10-K reports
+                        using RAG, OpenAI, and rule-based validation. Includes FAISS-based semantic retrieval over a
+                        9-document knowledge base, deterministic validators for accounting checks, MongoDB storage,
+                        Gmail API email polling, and an HTML review dashboard for accepted, needs_review, and failed
+                        documents.</p>
+                    <div class="project-stack">
+                        <span>Python</span><span>FastAPI</span><span>OpenAI</span><span>FAISS</span><span>MongoDB</span><span>Gmail API</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-tag">AI / Backend</div>
+                    <h3>
+                        askSashkoAi
+                        <a href="https://github.com/Sashko-Milushev/askSashkoAi" target="_blank" rel="noopener"
+                           class="project-link">GitHub ↗</a>
+                    </h3>
+                    <p>This website — a RAG-powered AI chatbot that speaks as me in first person. Built with FastAPI,
+                        OpenAI GPT-4o, FAISS, and a plain HTML/JS frontend. Includes rate limiting, session tracking,
+                        daily cost cap, email notifications, PostgreSQL, Alembic migrations, and deployment on Railway
+                        with Cloudflare DNS.</p>
+                    <div class="project-stack">
+                        <span>Python</span><span>FastAPI</span><span>OpenAI</span><span>FAISS</span><span>PostgreSQL</span><span>Railway</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-tag">Backend / Full-stack</div>
+                    <h3>
+                        Fishbook
+                        <a href="https://github.com/Sashko-Milushev/fishbook" target="_blank" rel="noopener"
+                           class="project-link">GitHub ↗</a>
+                    </h3>
+                    <p>A social platform for hobby fishermen built as my SoftUni diploma project. Users can share
+                        photos, like and comment on posts, and find information about lakes and weather conditions.
+                        Built entirely without AI coding assistants — everything was planned, implemented, and debugged
+                        manually, which made it a strong foundation for understanding full-stack development.</p>
+                    <div class="project-stack">
+                        <span>Django</span><span>PostgreSQL</span><span>JavaScript</span><span>HTML</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-tag">Python / Multi-interface</div>
+                    <h3>
+                        WeatherApp
+                        <a href="https://github.com/Sashko-Milushev/weather-application" target="_blank" rel="noopener"
+                           class="project-link">GitHub ↗</a>
+                    </h3>
+                    <p>A multi-interface weather system built to demonstrate how the same core logic can be reused
+                        across different technologies. Includes a console app, a Tkinter desktop GUI, a Flask web app,
+                        and a Django web app with database support for comparing weather data between cities. Uses the
+                        OpenWeather API for real-time data.</p>
+                    <div class="project-stack">
+                        <span>Python</span><span>Django</span><span>Flask</span><span>Tkinter</span><span>OpenWeather API</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ── BIO TAB ── -->
+    <section id="tab-bio" class="tab-section">
+        <div class="content-wrapper bio-layout">
+            <div class="bio-avatar">SM</div>
+            <div class="bio-text">
+                <h2>Sashko Milushev</h2>
+                <p class="bio-tagline">Python Developer — Backend &amp; AI Solutions</p>
+                <p>
+                    I build reliable, scalable backend systems and AI-powered applications.
+                    My stack is Python-first — FastAPI, Django, SQLAlchemy — combined with modern AI tools
+                    like OpenAI, LangChain, and vector databases.
+                </p>
+                <p>
+                    I care about clean code, good architecture, and building things that actually work.
+                    Whether it's a REST API, a RAG pipeline, or a full-stack solution — I like
+                    to understand the problem deeply before writing the first line.
+                </p>
+                <div class="bio-skills">
+                    <span>Python</span><span>FastAPI</span><span>Django</span>
+                    <span>SQLAlchemy</span><span>OpenAI</span><span>RAG</span>
+                    <span>PostgreSQL</span><span>Docker</span><span>REST APIs</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── CONTACT TAB ── -->
+    <section id="tab-contact" class="tab-section">
+        <div class="content-wrapper">
+            <h2>Get in touch</h2>
+            <p class="contact-intro">Have a project idea, a job opportunity, or just want to say hi? Send me a
+                message.</p>
+            <form id="contact-form" class="contact-form" novalidate>
+                <div class="form-group">
+                    <label for="c-name">Name</label>
+                    <input id="c-name" type="text" placeholder="Your name" required maxlength="200"/>
+                </div>
+                <div class="form-group">
+                    <label for="c-email">Email</label>
+                    <input id="c-email" type="email" placeholder="your@email.com" required/>
+                </div>
+                <div class="form-group">
+                    <label for="c-message">Message</label>
+                    <textarea id="c-message" rows="5" placeholder="What's on your mind?" required
+                              maxlength="3000"></textarea>
+                </div>
+                <button type="submit" class="btn-primary" id="contact-submit">Send message</button>
+                <p id="contact-status" class="form-status hidden"></p>
+            </form>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 Sashko Milushev &mdash; Built with FastAPI &amp; OpenAI</p>
+</footer>
+
+<script src="/app.js"></script>
 </body>
 </html>
