@@ -1,5 +1,6 @@
 import datetime
-from sqlalchemy import Boolean, Column, Date, DateTime, Float, Integer, String, Text
+from sqlalchemy import Boolean, Column, Date, DateTime, Float, ForeignKey, Integer, String, Text
+from sqlalchemy.orm import relationship
 from core.database import Base
 
 
@@ -45,4 +46,34 @@ class SessionUsage(Base):
     ip_address = Column(String(64), nullable=True)
     date = Column(Date, nullable=False)
     created_at = Column(DateTime(timezone=True), default=_now, nullable=False)
+
+
+class ConversationSession(Base):
+    __tablename__ = "conversation_sessions"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    session_id = Column(String(128), unique=True, index=True, nullable=False)
+    ip_address = Column(String(64), nullable=True)
+    created_at = Column(DateTime(timezone=True), default=_now, nullable=False)
+    updated_at = Column(DateTime(timezone=True), default=_now, onupdate=_now, nullable=False)
+
+    messages = relationship(
+        "ConversationMessage",
+        back_populates="conversation",
+        cascade="all, delete-orphan",
+        order_by="ConversationMessage.created_at",
+    )
+
+
+class ConversationMessage(Base):
+    __tablename__ = "conversation_messages"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    conversation_id = Column(Integer, ForeignKey("conversation_sessions.id"), nullable=False, index=True)
+    role = Column(String(16), nullable=False)
+    content = Column(Text, nullable=False)
+    action = Column(String(32), nullable=True)
+    created_at = Column(DateTime(timezone=True), default=_now, nullable=False)
+
+    conversation = relationship("ConversationSession", back_populates="messages")
 
